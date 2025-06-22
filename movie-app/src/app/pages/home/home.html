@@ -1,6 +1,9 @@
 <div class="home">
     <div class="header">
-        <input class="search-input" type="text" [(ngModel)]="searchValue" (ngModelChange)="onTriggerSearch()" />
+        <div class="search">
+            <input class="search-input" type="text" [(ngModel)]="searchValue" (ngModelChange)="onTriggerSearch()" />
+            <i class="pi pi-search search-icon"></i>
+        </div>
     </div>
     <div class="movie-search"></div>
     <div class="popular-movies"></div>
