@@ -1,1 +1,35 @@
-<p>movie-details works!</p>
+@if (apiConfig$ |async; as apiConfig) {
+<div class="details-page">
+    <div class="header">
+        <a class="button-64" routerLink="/home">
+            <span>Go back</span>
+        </a>
+    </div>
+    <div class="content">
+        @if (movieDetails$ | async; as details) {
+        <img class="poster" [src]="apiConfig.images.base_url + 'w500' + details.poster_path" [alt]="details.title">
+        <div class="details">
+            <h1>{{details.title}}</h1>
+            <h4>Release date: {{details.release_date}}</h4>
+            <p>{{details.overview}}</p>
+            <div class="genres">
+                <span>Genres:</span>
+                @for (genre of details.genres; track $index) {
+                <span>{{genre.name}}</span>
+                }
+            </div>
+            <span>Rating: {{details.popularity}}</span>
+            <span>Runtime: {{details.runtime}}</span>
+            <div class="languages">
+                <span>Language:</span>
+                @for (language of details.spoken_languages; track $index) {
+                <span>{{language.name}}</span>
+                }
+            </div>
+        </div>
+        } @else {
+        <app-loading />
+        }
+    </div>
+</div>
+}

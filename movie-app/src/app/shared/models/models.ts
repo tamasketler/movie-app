@@ -4,6 +4,13 @@ export interface ApiResponse {
     total_results: number;
 }
 
+export interface ApiConfig {
+    images: {
+        base_url: string;
+        poster_sizes: string[];
+    }
+}
+
 export interface PopularMoviesResponse extends ApiResponse {
     results: MovieModel[];
 }
@@ -34,7 +41,7 @@ export interface MovieDetailsModel {
     genres: {
         id: number;
         name: string;
-    },
+    }[],
     homepage: string;
     id: number;
     imdb_id: string;
@@ -48,11 +55,11 @@ export interface MovieDetailsModel {
         logo_path: string;
         name: string;
         origin_country: string;
-    },
+    }[],
     production_countries: {
         iso_3166_1: string;
         name: string;
-    }
+    }[],
     release_date: string;
     revenue: number;
     runtime: number;
@@ -60,7 +67,7 @@ export interface MovieDetailsModel {
         english_name: string;
         iso_639_1: string;
         name: string;
-    },
+    }[],
     status: string;
     tagline: string;
     title: string;

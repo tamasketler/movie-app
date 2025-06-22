@@ -1,12 +1,16 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { MovieDataService } from './shared/services/movie-data.service';
+import { CommonModule } from '@angular/common';
 import { RouterOutlet } from '@angular/router';
+import { tap } from 'rxjs';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet],
+  imports: [CommonModule, RouterOutlet],
   templateUrl: './app.html',
   styleUrl: './app.scss'
 })
 export class App {
   protected title = 'Movie-App';
+
 }

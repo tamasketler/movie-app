@@ -1,10 +1,63 @@
+@if (apiConfig$ | async; as apiConfig) {
 <div class="home">
     <div class="header">
         <div class="search">
-            <input class="search-input" type="text" [(ngModel)]="searchValue" (ngModelChange)="onTriggerSearch()" />
+            <input class="search-input" type="text" [(ngModel)]="searchValue"
+                (ngModelChange)="onTriggerSearch($event)" />
             <i class="pi pi-search search-icon"></i>
         </div>
     </div>
-    <div class="movie-search"></div>
-    <div class="popular-movies"></div>
+    <div class="movie-search">
+        @if (searchMovies$ | async; as searchMovies) {
+        <h1 *ngIf="searchMovies.length">Search result: </h1>
+        @for (movie of searchMovies; track $index) {
+        <a [routerLink]="'/details/'+ movie.id" class="movie-list-item">
+            <img class="movie-list-item-thumbnail"
+                [src]="apiConfig.images.base_url + apiConfig.images.poster_sizes[0] + movie.poster_path"
+                [alt]="movie.title">
+            <div class="movie-list-item-details">
+                <div class="movie-list-item-details-title">{{movie.original_title}}</div>
+                <div class="movie-list-item-details-release">
+                    <h5>Release: </h5>
+                    <span>{{movie.release_date}}</span>
+                </div>
+                <div class="movie-list-item-details-rating">
+                    <span>{{movie.popularity}}</span>
+                    <i class="pi pi-star-fill" style="color: yellow;"></i>
+                </div>
+            </div>
+        </a>
+        }
+        } @else {
+        <app-loading />
+        }
+    </div>
+    <div class="popular-movies">
+        <h1>Most popular movies</h1>
+        @if (popularMovies$ | async; as popularMovies) {
+        @for (movie of popularMovies; track $index) {
+        <a [routerLink]="'/details/'+ movie.id" class="movie-list-item">
+            <img class="movie-list-item-thumbnail"
+                [src]="apiConfig.images.base_url + apiConfig.images.poster_sizes[0] + movie.poster_path"
+                [alt]="movie.title">
+            <div class="movie-list-item-details">
+                <div class="movie-list-item-details-title">{{movie.original_title}}</div>
+                <div class="movie-list-item-details-release">
+                    <h5>Release: </h5>
+                    <span>{{movie.release_date}}</span>
+                </div>
+                <div class="movie-list-item-details-rating">
+                    <span>{{movie.popularity}}</span>
+                    <i class="pi pi-star-fill" style="color: yellow;"></i>
+                </div>
+            </div>
+        </a>
+        }
+        } @else {
+        <app-loading />
+        }
+    </div>
 </div>
+} @else {
+<app-loading />
+}

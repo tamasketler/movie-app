@@ -1,6 +1,9 @@
 .home {
-    display: flex;
     width: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 12px;
 
     &>.header {
         display: flex;
@@ -25,5 +28,64 @@
                 padding-left: 8px;
             }
         }
+    }
+
+    >.movie-search,
+    .popular-movies {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .movie-list-item {
+        width: 80%;
+        display: flex;
+        padding: 1rem;
+        box-shadow: rgba(60, 64, 67, 0.3) 0px 1px 2px 0px, rgba(60, 64, 67, 0.15) 0px 2px 6px 2px;
+        text-decoration: none;
+        color: black;
+        transition: transform 1s;
+
+        >.movie-list-item-thumbnail {
+            width: 100px;
+            height: 150px;
+            padding: 8px;
+        }
+
+        >.movie-list-item-details {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            padding: 8px;
+
+            >.movie-list-item-details-title {
+                display: flex;
+                font-size: 2rem;
+                font-weight: 700;
+            }
+
+            >.movie-list-item-details-release {
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+                align-items: center;
+            }
+
+            >.movie-list-item-details-rating {
+                display: flex;
+                flex-direction: row;
+                gap: 8px;
+                align-items: center;
+            }
+        }
+    }
+
+    .movie-list-item:hover {
+        transform: scale(1.05);
     }
 }

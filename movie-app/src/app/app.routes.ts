@@ -5,6 +5,12 @@ import { MovieDetails } from './pages/movie-details/movie-details';
 export const routes: Routes = [
     {
         path: '',
+        redirectTo: 'home',
+        pathMatch: 'full',
+        title: 'App',
+    },
+    {
+        path: 'home',
         component: Home,
         title: 'Home page',
     },

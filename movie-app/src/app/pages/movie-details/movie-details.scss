@@ -1,0 +1,44 @@
+.details-page {
+    width: 90vw;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+
+    >.header {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 24px;
+        align-items: start;
+    }
+
+    >.content {
+        width: 100%;
+        display: flex;
+        flex-direction: row;
+        padding: 12px;
+
+        >.details {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: wrap;
+            gap: 8px;
+            padding: 24px;
+
+            >.genres {
+                display: flex;
+                flex-direction: row;
+                gap: 4px;
+            }
+
+            >.languages {
+                display: flex;
+                flex-direction: row;
+                gap: 4px;
+            }
+        }
+    }
+}
